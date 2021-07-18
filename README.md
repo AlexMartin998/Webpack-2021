@@ -25,3 +25,8 @@ y para construir el build recuerden:
 ```
 npm run build
 ```
+
+Polyfilling:
+```
+import "core-js/stable";
+```

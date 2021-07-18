@@ -3,12 +3,13 @@ const HtmlWebpackPlugin = require("html-webpack-plugin"),
     CssMinimizerPlugin = require("css-minimizer-webpack-plugin"),
     CopyPlugin = require("copy-webpack-plugin");
 
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+// const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const path = require("path");
 // const { SourceMapDevToolPlugin } = require("webpack");
 
 
 module.exports = {
+    entry: './src/index.js',
     mode: "production",
     output: {
         path: path.resolve(__dirname, "dist"),
@@ -40,8 +41,8 @@ module.exports = {
                 use: ["style-loader", "css-loader"],
             },
             {
-                test: /styles\.css$/,
-                use: [MiniCssExtractPlugin.loader, "css-loader"],
+                test: /\.(sa|sc|c)ss$/,
+                use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
             },
             {
                 test: /\.(jpe?g|png|gif|svg|webp)$/i,
@@ -69,9 +70,11 @@ module.exports = {
             patterns: [{ from: "src/assets", to: "assets" }],
         }),
         new CssMinimizerPlugin(),
-        new CleanWebpackPlugin({
-            cleanOnceBeforeBuildPatterns: [path.join(__dirname, "dist/**/*")],
-        }),
+
+            // // Reemplazado por el  rimraf
+            // new CleanWebpackPlugin({
+            //     cleanOnceBeforeBuildPatterns: [path.join(__dirname, "dist/**/*")],
+            // }),
         // new SourceMapDevToolPlugin({
         //     filename: "[file].map"
         //   }),

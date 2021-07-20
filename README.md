@@ -33,5 +33,5 @@ import "core-js/stable";
 ```
 Async await
 ```
-import "regenerator-runtime";
+import 'regenerator-runtime/runtime';
 ```

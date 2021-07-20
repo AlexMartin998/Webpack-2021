@@ -26,7 +26,12 @@ y para construir el build recuerden:
 npm run build
 ```
 
-Polyfilling:
+#### Polyfilling:
+Core normal:
 ```
 import "core-js/stable";
+```
+Async await
+```
+import "regenerator-runtime";
 ```
